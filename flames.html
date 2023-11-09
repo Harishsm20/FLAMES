@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLAMES</title>
+    <link rel="stylesheet" href="fl.css">
+    <!-- <link  href="friends.html"> -->
+</head>
+<body class="bg">
+  <h2 class="flames">LET'S CHECK YOUR <br></h2>
+  <p> <b>RELATIONSHIP</b></p>
+<!-- <div class="names"> -->
+  <!-- <p>YOUR NAME: <br></p> -->
+<!-- </div> -->
+<div class="names">
+  <label for="name1">Your name:</label>
+  <input type="text" id="name1" placeholder="Enter your name">
+</div>
+<!-- <div class="names"> -->
+  <!-- <p>YOUR CRUSH's NAME: <br></p> -->
+<!-- </div> -->
+<div class="names">
+  <label for="name2">Your crush's name:</label>
+  <input type="text" id="name2" placeholder="Enter your crush's name">
+</div>
+<div>
+  <button onclick="calculate()">Calculate</button>
+</div>
+<div>
+  <p id="result"></p>
+</div>
+<div class="box" >
+  <p class="notice1">NOTICE: The process can be used as a love metre to determine whether you and your crush
+     have the potential to develop a romantic relationship or merely to determine what the future holds
+      for you and the person you just met. The majority of preteens and teens have already played this 
+      amusing name game.
+  </p>
+</div>
+<div>
+  <h3>F   L   A   M   E   S</h3>
+</div>
+<script>
+  function calculate() {
+      var name1 = document.getElementById("name1").value.toLowerCase().replace(/\s/g, '');
+      var name2 = document.getElementById("name2").value.toLowerCase().replace(/\s/g, '');
+    
+      var flames = "flames";
+      var count = name1.length + name2.length;
+    
+      for (var i = 0; i < name1.length; i++) {
+        for (var j = 0; j < name2.length; j++) {
+          if (name1[i] == name2[j]) {
+            count -= 2;
+            name2 = name2.slice(0, j) + name2.slice(j + 1);
+            break;
+          }
+        }
+      }
+    
+      while (flames.length > 1) {
+        var index = count % flames.length;
+        if (index == 0) {
+          flames = flames.slice(0, flames.length - 1);
+        } else {
+          flames = flames.slice(index) + flames.slice(0, index - 1);
+        }
+      }
+    
+      var result = "";
+      switch (flames) {
+        case "f":
+          window.location.href = "friends.html";
+         
+          // result = "Friends";
+          break;
+        case "l":
+          window.location.href = "love.html";
+
+          // result = "Lovers";
+          break;
+        case "a":
+          window.location.href = "affection.html";
+          // result = "Affectionate";
+          break;
+        case "m":
+          window.location.href = "marriage.html";
+
+          // result = "Married";
+          break;
+        case "e":
+          window.location.href = "enemies.html";
+
+        // result = "Enemies";
+          break;
+        case "s":
+          window.location.href = "sibiling.html";
+
+        // result = "Siblings";
+          break;
+      }
+    
+      document.getElementById("result").innerHTML = result;
+    }
+    
+  </script>
+
+</body>
+</html>
